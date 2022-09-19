@@ -10,7 +10,7 @@ if(!empty($yourName)|| !empty($yourIndex)|| !empty($yourContactNumber)|| !empty(
 	$host = "localhost";
 	$dbUserName = "root";
 	$dbPassword = "";
-	$dbname = "youtube";
+	$dbname = "pickmeditime";
 
 	//create connection
 	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
