@@ -4,6 +4,6 @@ CREATE TABLE book_appoinment (
     your_index  int(10) NOT NULL,
     your_contact_number  bigint(10) NOT NULL,
     email varchar(50) NOT NULL,
-    date date NOT NUL
+    date date NOT NULL,
     PRIMARY KEY (your_index),
 );
