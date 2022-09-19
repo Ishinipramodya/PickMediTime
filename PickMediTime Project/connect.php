@@ -1,26 +1,31 @@
 <?php
+
 $yourName = $_POST['yourName'];
 $yourIndex = $_POST['yourIndex'];
 $yourContactNumber = $_POST['yourContactNumber'];
 $email = $_POST['email'];
 $date = $_POST['date'];
 
+
+
 //Database connection
-if(!empty($yourName)|| !empty($yourIndex)|| !empty($yourContactNumber)|| !empty($email)|| !empty($date)){
+if(!(empty($yourName))|| !(empty($yourIndex))|| !(empty($yourContactNumber))|| !(empty($email))|| !(empty($date)) ){
 	$host = "localhost";
 	$dbUserName = "root";
 	$dbPassword = "";
-	$dbname = "pickmeditime";
+	$dbname = "pick_medi_time";
 
 	//create connection
-	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+	$conn = new mysqli($host, $dbUserName, $dbPassword, $dbname);
 
-	if(mysqli_connect_error()){
+
+	if($conn->connect_errno){
 		die('Connect Error('.mysqli_connect_errno().')'. mysqli_connect_error());
 
 	}else{
-		$SELECT = "SELECT email From bookappoinment Where email = ?Limit 1";
-		$INSERT = "INSERT Into bookappoinment(yourName, yourIndex, yourContactNumber, email, date) values(?, ?, ?, ?, ?)";
+
+		$SELECT = 'SELECT email From book_appoinment WHERE email =? LIMIT 1';
+		$INSERT = "INSERT INTO book_appoinment (your_name, your_index, your_contact_number, email, date) values(?, ?, ?, ?, ?)";
 
 		//Prepare statement
 		$stmt = $conn->prepare($SELECT);
@@ -29,6 +34,7 @@ if(!empty($yourName)|| !empty($yourIndex)|| !empty($yourContactNumber)|| !empty(
 		$stmt->bind_result($email);
 		$stmt->store_result();
 		$rnum = $stmt->num_rows;
+
 
 		if($rnum==0){
 			$stmt->close();
