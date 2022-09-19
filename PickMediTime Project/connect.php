@@ -5,23 +5,17 @@ $yourContactNumber=$_POST['yourContactNumber'];
 $email=$_POST['email'];
 $date=$_POST['date'];
 
-$server_name = "localhost";
-$user_name = "root";
-$password = "";
-$database = "pickmeditime";
-
-$connection = new mysqli($server_name , $user_name , $password , $database);
-
-if($connection->connect_error){
-	die('Connection erroe : '.$connection->connect_error);
+//Database connection
+$conn = new mysqli('localhost','root','','pickmeditime');
+if($conn->connect_error){
+	die('Connection Failed :'.$conn->connect_error');
 }else{
-	$stml= $connection->prepare("insert into registration(yourName,yourIndex,yourContactNumber,email,date)
+	$stmt = $conn->prepare("insert into appoinment(yourName,yourIndex,yourContactNumber,email,date)
 		values(?,?,?,?,?)");
-	$stml->bind_param("ssssi",$yourName,$yourIndex,$yourContactNumber,$email,$date);
-	$stml->execute();
-	echo"submitted";
-	$stml->close();
-	$stml->close();
-
+	$stmt->bind_param("ssssi",$yourName,$yourIndex,$yourContactNumber,$email,$date);
+	$stmt->execute();
+	echo "registration successfully...";
+	$stmt->close();
+	$conn->close();	
 }
 ?>
