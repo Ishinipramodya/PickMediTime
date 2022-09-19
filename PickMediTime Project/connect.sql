@@ -1,4 +1,4 @@
-CREATE DATABASE pickmeditime;
+CREATE DATABASE pick_medi_time;
 CREATE TABLE book_appoinment (
     your_name  varchar(100) NOT NULL,
     your_index  int(10) NOT NULL,
