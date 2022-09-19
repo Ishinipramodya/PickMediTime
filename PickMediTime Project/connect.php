@@ -13,9 +13,9 @@ $database = "pickmeditime";
 $connection = new mysqli($server_name , $user_name , $password , $database);
 
 if($connection->connect_error){
-	die('Connection erroe : '.$conn->connect_error);
+	die('Connection erroe : '.$connection->connect_error);
 }else{
-	$stml= $conn->prepare("insert into registration(yourName,yourIndex,yourContactNumber,email,date)
+	$stml= $connection->prepare("insert into registration(yourName,yourIndex,yourContactNumber,email,date)
 		values(?,?,?,?,?)");
 	$stml->bind_param("ssssi",$yourName,$yourIndex,$yourContactNumber,$email,$date);
 	$stml->execute();
