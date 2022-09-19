@@ -5,5 +5,5 @@ CREATE TABLE book_appoinment (
     your_contact_number  bigint(10) NOT NULL,
     email varchar(50) NOT NULL,
     date date NOT NULL,
-    PRIMARY KEY (your_index),
+    PRIMARY KEY (your_index)
 );
